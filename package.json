@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "electron": "wait-on tcp:3000 && cross-env NODE_ENV=development electron .",
     "electron:serve": "concurrently -k \"yarn dev\" \"yarn electron\"",
-    "electron:build": "vite build && electron-builder"
+    "electron:build": "vite build && electron:build-mac && electron:build-win",
+    "electron:build-mac": "electron-builder -m",
+    "electron:build-win": "electron-builder -w",
+    "electron:build-lin": "electron-builder -l"
   },
   "dependencies": {
     "vue": "^3.2.25"
@@ -27,7 +30,7 @@
   },
   "build": {
     "appId": "com.my-website.my-app",
-    "productName": "MyApp",
+    "productName": "viteElectron",
     "copyright": "Copyright © 2021 PY",
     "mac": {
       "category": "public.app-category.utilities"
